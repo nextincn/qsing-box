@@ -1,10 +1,10 @@
 #include "main_window.h"
 
 #include <QApplication>
-// #include <QLockFile>
 #include <QLocale>
 #include <QMessageBox>
 #include <QSharedMemory>
+#include <QTimer>
 #include <QTranslator>
 
 #include <Windows.h>
@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
         }
     }
     if (isAutorun) {
-        mainWindow.startProxy();
+        QTimer::singleShot(3000, &mainWindow, &MainWindow::startProxy);
     } else {
         mainWindow.show();
     }
